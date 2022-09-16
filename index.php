@@ -1,4 +1,16 @@
+<?php
+include('./db_config.php');
+$sql="select * from todo_list";
+$result=$conn->query($sql);
+
+
+$row=$result->fetch_assoc();
+print_r($row);
+
+?>
+
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -18,35 +30,42 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Name</th>
+      <th scope="col">ID</th>
+      <th scope="col">GO TO</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Aayush</td>
-      <td>Mandu</td>
-      <td>@mdo</td>
+
+      <?php 
+      while($row =$result->fetch_assoc()){ ?>
+      <td><?php echo $row["id"];?></td>
+      <td><?php echo $row["title"];?></td>
       <td><button type="button" class="btn btn-danger">Delete</button></td>
+      <?php
+      }
+      ?>
     </tr>
-    <tr>
+  <!--  <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
+           <td></td>
+
+      <td></td>
       <td><button type="button" class="btn btn-danger">Delete</button></td>
 
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+      <td>Sacob</td>
+      <td></td>
+
+      <td></td>
       <td><button type="button" class="btn btn-danger">Delete</button></td>
 
-    </tr>
+    </tr> -->
   </tbody>
 </table>
 </div>
