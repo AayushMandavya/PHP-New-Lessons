@@ -4,8 +4,8 @@ $sql="select * from todo_list";
 $result=$conn->query($sql);
 
 
-$row=$result->fetch_assoc();
-print_r($row);
+
+
 
 ?>
 
@@ -29,25 +29,39 @@ print_r($row);
    <table class="table table-striped mt-3">
   <thead>
     <tr>
-      <th scope="col">#</th>
+    <th scope="col">ID</th>
       <th scope="col">Name</th>
-      <th scope="col">ID</th>
-      <th scope="col">GO TO</th>
       <th scope="col">Action</th>
+
     </tr>
   </thead>
   <tbody>
-    <tr>
-
+     <tr>
       <?php 
       while($row =$result->fetch_assoc()){ ?>
       <td><?php echo $row["id"];?></td>
       <td><?php echo $row["title"];?></td>
       <td><button type="button" class="btn btn-danger">Delete</button></td>
-      <?php
+      </tr>
+    <?php
       }
       ?>
-    </tr>
+
+    <?php
+    $testArray=array('1','2','3');
+    print_r($testArray);
+    $length=count($testArray); 
+   
+   for ($i = 0; $i < $length; $i++) {
+   
+    echo "<li>";
+    echo $testArray[$i];
+    echo "</li>";
+   }
+   
+   ?>
+
+  
   <!--  <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
@@ -68,6 +82,8 @@ print_r($row);
     </tr> -->
   </tbody>
 </table>
+
+
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
