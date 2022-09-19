@@ -1,11 +1,9 @@
 <?php
 include('./db_config.php');
+
+
 $sql="select * from todo_list";
 $result=$conn->query($sql);
-
-
-
-
 
 ?>
 
@@ -20,10 +18,10 @@ $result=$conn->query($sql);
   </head>
   <body>
     <div class="container p-3">
-        <h3>To Do Application</h3>
-   <form action="save-todo.php" method="post">
+        <h3>My Application</h3>
+   <form action="savefile.php" method="post">
     <input type="text" class="form-control" name="todo" id="" placeholder="Write here">
-    <button type="submit" class="btn btn-primary mt-2">TO DO</button>
+    <button type="submit" class="btn btn-primary mt-2">ADD</button>
    </form>
 
    <table class="table table-striped mt-3">
@@ -31,6 +29,7 @@ $result=$conn->query($sql);
     <tr>
     <th scope="col">ID</th>
       <th scope="col">Name</th>
+      <th scope="col">Action</th>
       <th scope="col">Action</th>
 
     </tr>
@@ -41,25 +40,15 @@ $result=$conn->query($sql);
       while($row =$result->fetch_assoc()){ ?>
       <td><?php echo $row["id"];?></td>
       <td><?php echo $row["title"];?></td>
-      <td><button type="button" class="btn btn-danger">Delete</button></td>
+      <td><a href="newupdate.php">Update</td>
+      <td><a href="deletefile.php?id=<?php echo $row["id"];?>">Delete</td>
+     
       </tr>
     <?php
       }
       ?>
 
-    <?php
-    $testArray=array('1','2','3');
-    print_r($testArray);
-    $length=count($testArray); 
-   
-   for ($i = 0; $i < $length; $i++) {
-   
-    echo "<li>";
-    echo $testArray[$i];
-    echo "</li>";
-   }
-   
-   ?>
+
 
   
   <!--  <tr>
